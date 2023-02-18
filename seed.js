@@ -8,7 +8,7 @@ console.log('Deleted all products');
 const products = [
   {
     title: 'Basie OncePiece',
-    Price: 150,
+    price: 150,
     image:
       'http://res.cloudinary.com/ddfl8c6gu/image/upload/v1676160988/ijqu0pkr7utxazha0eov.webp',
     category: 'Women',
@@ -17,7 +17,7 @@ const products = [
   },
   {
     title: 'Black Hoodie',
-    Price: 80,
+    price: 80,
     image:
       'http://res.cloudinary.com/ddfl8c6gu/image/upload/v1676160814/wxttajqcuu5bsh9bbhwt.webp',
     category: 'Unisex',
@@ -26,7 +26,7 @@ const products = [
   },
   {
     title: 'Pink Hoodie',
-    Price: 80,
+    price: 80,
     image:
       'http://res.cloudinary.com/ddfl8c6gu/image/upload/v1676160047/rlwp8d2ntfi5eo5szddg.webp',
     category: 'Unisex',
@@ -35,7 +35,7 @@ const products = [
   },
 ];
 
-const prod = await ProductsModel.insertMany(products);
+await ProductsModel.insertMany(products);
 console.log('Inserted products');
 
 // const entries = [
