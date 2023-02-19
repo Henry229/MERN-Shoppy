@@ -1,5 +1,5 @@
 import express from 'express';
-import { ProductsModel } from './db.js';
+import { ProductsModel, CartsModel } from './db.js';
 // import entryRoutes from './routes/entry_routes.js';
 import cors from 'cors';
 
@@ -17,6 +17,30 @@ app.post('/products/:id', async (req, res) => {
   try {
     const addedProduct = await ProductsModel.create(req.body);
     res.status(201).send(addedProduct);
+  } catch (error) {
+    res.status(500).send({ error: error.message });
+  }
+});
+
+app.get('/cart', async (req, res) => {
+  try {
+    const inCart = await CartsModel.find();
+    // const inCart = await CartsModel.findById(req.params.uid);
+    console.log('==>In Cart: ', inCart);
+    if (inCart) {
+      res.send(inCart);
+    } else {
+      res.status(404).send({ error: 'Cart not found' });
+    }
+  } catch (error) {
+    res.status(500).send({ error: error.message });
+  }
+});
+
+app.put('/carts', async (req, res) => {
+  try {
+    const addedCarts = await CartsModel.create(req.body);
+    res.status(201).send(addedCarts);
   } catch (error) {
     res.status(500).send({ error: error.message });
   }
